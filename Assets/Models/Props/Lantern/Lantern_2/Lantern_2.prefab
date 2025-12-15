@@ -133,7 +133,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 1, g: 0.627451, b: 0.2, a: 1}
+  m_Color: {r: 1, g: 0.6279562, b: 0.19999999, a: 1}
   m_Intensity: 1
   m_Range: 3
   m_SpotAngle: 30
@@ -143,10 +143,10 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.75
+    m_Strength: 0.98
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.1
+    m_NearPlane: 0.03
     m_CullingMatrixOverride:
       e00: 1
       e01: 0

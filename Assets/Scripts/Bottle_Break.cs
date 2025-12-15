@@ -39,10 +39,6 @@ public class Bottle_Break : MonoBehaviour
         GameObject prefab = breaks[Random.Range(0, breaks.Length)];
         GameObject brokenBottle = Instantiate(prefab, transform.position, transform.rotation);
 
-//        Rigidbody[] shards = brokenBottle.GetComponentsInChildren<Rigidbody>();
-//        foreach (Rigidbody rb in shards)
-//            rb.isKinematic = false;
-
         Destroy(gameObject);
     }
 

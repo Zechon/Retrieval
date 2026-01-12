@@ -1,35 +1,33 @@
 using UnityEngine;
-using System.Globalization;
 
-public class PlayerCamera : MonoBehaviour
+public class Player_Camera : MonoBehaviour
 {
     [SerializeField] private Camera playerCam;
-    [SerializeField] private float mouseSensitivity = 2f;
-    [SerializeField] private AudioListener listener;
-    private Camera mainCam;
-    private AudioListener mainListener;
+    [SerializeField] private float mouseSensitivity = 3f;
     private float xRotation;
 
-    void Start()
+    void Awake()
     {
-        GameObject mainObj = GameObject.FindGameObjectWithTag("MainCamera");
-        mainCam = mainObj.GetComponent<Camera>();
-        mainCam.enabled = false;
-        mainListener = mainObj.GetComponent<AudioListener>();
-        mainListener.enabled = false;
+        var mainCam = Camera.main;
+        if (mainCam)
+        {
+            mainCam.enabled = false;
+            mainCam.GetComponent<AudioListener>().enabled = false;
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    private void Update()
+    void LateUpdate()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * 100f * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * 100f * Time.deltaTime;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -85f, 85f);
 
-        playerCam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        playerCam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
 }

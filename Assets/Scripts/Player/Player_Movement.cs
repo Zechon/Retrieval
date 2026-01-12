@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
-public class PlayerMovement : MonoBehaviour
+public class Player_Movement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float groundCheckOffset = 0.1f;
 
     [Header("Other Setup")]
-    private PlayerInputActions inputActions;
+    private Player_Inputs inputActions;
     private Vector2 moveInput;
     private Rigidbody rb;
 
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        inputActions = new PlayerInputActions();
+        inputActions = new Player_Inputs();
 
         CapsuleCollider capsule = GetComponent<CapsuleCollider>();
 

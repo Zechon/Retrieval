@@ -18,6 +18,8 @@ public class PlayerCamera : MonoBehaviour
         CursorLocker.Lock();
     }
 
+
+    //TODO: Find out why Input System does not work here
     private void OLD_LateUpdate()
     {
         //read mouse input

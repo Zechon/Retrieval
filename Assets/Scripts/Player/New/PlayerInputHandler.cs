@@ -11,6 +11,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public bool JumpPressed { get; private set; }
     public bool JumpHeld { get; private set; }
+    public bool CrouchHeld { get; private set; }
+    public bool SprintHeld { get; private set; }
 
     private void Awake()
     {
@@ -41,6 +43,12 @@ public class PlayerInputHandler : MonoBehaviour
 
         inputs.Player.Jump.performed += OnJumpPerformed;
         inputs.Player.Jump.canceled += OnJumpCanceled;
+
+        inputs.Player.Crouch.performed += OnCrouchPerformed;
+        inputs.Player.Crouch.canceled += OnCrouchCanceled;
+
+        inputs.Player.Sprint.performed += OnSprintPerformed;
+        inputs.Player.Sprint.canceled += OnSprintCanceled;
     }
 
     private void UnregisterCallbacks()
@@ -50,6 +58,12 @@ public class PlayerInputHandler : MonoBehaviour
 
         inputs.Player.Jump.performed -= OnJumpPerformed;
         inputs.Player.Jump.canceled -= OnJumpCanceled;
+
+        inputs.Player.Crouch.performed -= OnCrouchPerformed;
+        inputs.Player.Crouch.canceled -= OnCrouchCanceled;
+
+        inputs.Player.Sprint.performed -= OnSprintPerformed;
+        inputs.Player.Sprint.canceled -= OnSprintCanceled;
     }
 
     private void OnMove(InputAction.CallbackContext ctx)
@@ -66,6 +80,25 @@ public class PlayerInputHandler : MonoBehaviour
     private void OnJumpCanceled(InputAction.CallbackContext ctx)
     {
         JumpHeld = false;
+    }
+
+    private void OnCrouchPerformed(InputAction.CallbackContext ctx)
+    {
+        CrouchHeld = true;
+    }
+
+    private void OnCrouchCanceled(InputAction.CallbackContext ctx)
+    {
+        CrouchHeld = false;
+    }
+    private void OnSprintPerformed(InputAction.CallbackContext ctx)
+    {
+        SprintHeld = true;
+    }
+
+    private void OnSprintCanceled(InputAction.CallbackContext ctx)
+    {
+        SprintHeld = false;
     }
 
     private void LateUpdate()

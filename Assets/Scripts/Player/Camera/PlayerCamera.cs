@@ -23,7 +23,7 @@ public class PlayerCamera : MonoBehaviour
     }
 
     //TODO: Find out why Input System does not work here
-    private void LateUpdate()
+    private void NEW_LateUpdate()
     {
         //read mouse input
         Vector2 look = updateLook;// input.Look;
@@ -39,7 +39,7 @@ public class PlayerCamera : MonoBehaviour
         cameraPivot.localRotation = Quaternion.Euler(pitch, 0f, 0f);
     }
 
-    private void OLD_LateUpdate()
+    private void LateUpdate()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensX;
         float mouseY = Input.GetAxis("Mouse Y") * sensY;

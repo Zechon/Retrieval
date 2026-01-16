@@ -31,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float maxSlopeAngle = 50f;
     [SerializeField] LayerMask groundMask;
 
+    [Header("Ceiling Check")]
+    [SerializeField] float ceilingCheckRadius = 0.25f;
+    [SerializeField] LayerMask ceilingMask;
+
     [Header("References")]
     [SerializeField] private Transform orientation;
     [SerializeField] private PlayerInputHandler input;
@@ -38,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 velocity;
 
-    private MovementState state;
+    public MovementState state { get; private set; }
     private float currentSpeed;
 
     private bool grounded;
@@ -82,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
         if (grounded && velocity.y < 0f)
             velocity.y = -2f;
 
-        if (grounded && input.JumpPressed)
+        if (grounded && input.JumpPressed && state != MovementState.Crouching)
         {
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
         }
@@ -118,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (input.CrouchHeld)
+        if (input.CrouchHeld || !HasCeilingClearance())
         {
             state = MovementState.Crouching;
             currentSpeed = crouchSpeed;
@@ -159,6 +163,20 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
+
+    //Ceiling check for Uncrouch
+    private bool HasCeilingClearance()
+    {
+        float standHeightDelta = standingHeight - crouchingHeight;
+        if (standHeightDelta <= 0f)
+            return true;
+
+        Vector3 checkPosition = transform.position + Vector3.up * (controller.center.y + controller.height / 2f + standHeightDelta);
+
+        return !Physics.CheckSphere(checkPosition, ceilingCheckRadius, ceilingMask, QueryTriggerInteraction.Ignore);
+    }
+
+
     private void DebugMyStuff()
     {
         Debug.Log(state.ToString());
@@ -167,9 +185,19 @@ public class PlayerMovement : MonoBehaviour
     //DEBUGGIN VISUALS :3
     private void OnDrawGizmosSelected()
     {
+        //Ground Check
         Gizmos.color = Color.yellow;
-        Vector3 origin = GetGroundCheckOrigin();
-        Gizmos.DrawWireSphere(origin + Vector3.down * groundCheckDistance, groundCheckRadius);
+        Vector3 GC_origin = GetGroundCheckOrigin();
+        Gizmos.DrawWireSphere(GC_origin + Vector3.down * groundCheckDistance, groundCheckRadius);
+
+
+        //Uncrouch Check
+        float standDelta = standingHeight - crouchingHeight;
+        if (standDelta <= 0f) return;
+
+        Gizmos.color = Color.red;
+        Vector3 UC_origin = transform.position + Vector3.up * (controller.center.y + controller.height / 2f + standDelta);
+        Gizmos.DrawWireSphere(UC_origin, ceilingCheckRadius);
     }
     #endregion
 }

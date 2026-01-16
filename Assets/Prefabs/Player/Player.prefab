@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 578218042744664516}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -228,9 +228,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8369540775764401226}
+  - component: {fileID: 1863719216187353786}
+  - component: {fileID: 5322916913280315535}
+  - component: {fileID: 2235699289901846975}
   - component: {fileID: 2664153795478080677}
   - component: {fileID: 4520258242051867322}
-  - component: {fileID: 1863719216187353786}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -256,6 +258,69 @@ Transform:
   - {fileID: 8154294585491796762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1863719216187353786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904411711441006849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd24f23a090ebe499575e89a3341de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  walkSpeed: 4.5
+  sprintSpeed: 7.5
+  crouchSpeed: 2.5
+  gravity: -25
+  jumpForce: 1.6
+  standingHeight: 2
+  crouchingHeight: 1.125
+  crouchTransitionSpeed: 10
+  groundCheckRadius: 0.3
+  groundCheckDistance: 0.3
+  maxSlopeAngle: 50
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  orientation: {fileID: 3875460188769865657}
+  input: {fileID: 2390893752805479727}
+  controller: {fileID: 4520258242051867322}
+--- !u!114 &5322916913280315535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904411711441006849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab7eeb5da9ca804c938c11df498f819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimations
+--- !u!95 &2235699289901846975
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904411711441006849}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 48b1cfc704884554689e09e0ea597e4a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &2664153795478080677
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -304,30 +369,6 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1863719216187353786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3904411711441006849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd24f23a090ebe499575e89a3341de7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
-  gravity: -25
-  jumpForce: 1.6
-  orientation: {fileID: 3875460188769865657}
-  input: {fileID: 2390893752805479727}
-  controller: {fileID: 4520258242051867322}
-  groundCheckRadius: 0.3
-  groundCheckDistance: 0.3
-  maxSlopeAngle: 50
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &6215255671238218554
 GameObject:
   m_ObjectHideFlags: 0

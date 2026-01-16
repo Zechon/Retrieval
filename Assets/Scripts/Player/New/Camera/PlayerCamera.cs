@@ -12,18 +12,21 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] PlayerInputHandler input;
 
     private float pitch;
-
+    Vector2 updateLook;
     private void Start()
     {
         CursorLocker.Lock();
     }
-
+    private void Update()
+    {
+        updateLook = input.Look * Time.deltaTime;
+    }
 
     //TODO: Find out why Input System does not work here
-    private void OLD_LateUpdate()
+    private void LateUpdate()
     {
         //read mouse input
-        Vector2 look = input.Look;
+        Vector2 look = updateLook;// input.Look;
     
         float yaw = look.x * sensX;
         float pitchDelta = look.y * sensY;
@@ -36,7 +39,7 @@ public class PlayerCamera : MonoBehaviour
         cameraPivot.localRotation = Quaternion.Euler(pitch, 0f, 0f);
     }
 
-    private void LateUpdate()
+    private void OLD_LateUpdate()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensX;
         float mouseY = Input.GetAxis("Mouse Y") * sensY;

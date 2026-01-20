@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform orientation;
     [SerializeField] private PlayerInputHandler input;
     [SerializeField] private CharacterController controller;
+    [SerializeField] private PauseMenuHandler pauseHandler;
 
     private Vector3 velocity;
 
@@ -56,10 +57,13 @@ public class PlayerMovement : MonoBehaviour
     {
         originalHeight = controller.height;
         originalCenter = controller.center;
+        pauseHandler = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenuHandler>();
     }
 
     private void Update()
     {
+        if (pauseHandler.paused) return;
+
         //Ground Check
         grounded = IsGrounded(out groundHit);
 
@@ -179,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void DebugMyStuff()
     {
-        Debug.Log(state.ToString());
+        //Debug.Log(state.ToString());
     }
 
     //DEBUGGIN VISUALS :3

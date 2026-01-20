@@ -10,11 +10,13 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] Transform orientation;
     [SerializeField] Transform cameraPivot;
     [SerializeField] PlayerInputHandler input;
+    [SerializeField] private PauseMenuHandler pauseHandler;
 
     private float pitch;
     Vector2 updateLook;
     private void Start()
     {
+        pauseHandler = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenuHandler>();
         CursorLocker.Lock();
     }
     private void Update()
@@ -41,6 +43,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (pauseHandler.paused) return;
+
         float mouseX = Input.GetAxis("Mouse X") * sensX;
         float mouseY = Input.GetAxis("Mouse Y") * sensY;
 

@@ -13,6 +13,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool JumpHeld { get; private set; }
     public bool CrouchHeld { get; private set; }
     public bool SprintHeld { get; private set; }
+    public bool PausePressed { get; private set; }
 
     private void Awake()
     {
@@ -49,6 +50,9 @@ public class PlayerInputHandler : MonoBehaviour
 
         inputs.Player.Sprint.performed += OnSprintPerformed;
         inputs.Player.Sprint.canceled += OnSprintCanceled;
+
+        inputs.Player.Pause.performed += OnPausePerformed;
+        inputs.Player.Pause.canceled += OnPauseCanceled;
     }
 
     private void UnregisterCallbacks()
@@ -64,8 +68,12 @@ public class PlayerInputHandler : MonoBehaviour
 
         inputs.Player.Sprint.performed -= OnSprintPerformed;
         inputs.Player.Sprint.canceled -= OnSprintCanceled;
+
+        inputs.Player.Pause.performed -= OnPausePerformed;
+        inputs.Player.Pause.canceled -= OnPauseCanceled;
     }
 
+    #region On XYZ
     private void OnMove(InputAction.CallbackContext ctx)
     {
         Move = ctx.ReadValue<Vector2>();
@@ -101,8 +109,21 @@ public class PlayerInputHandler : MonoBehaviour
         SprintHeld = false;
     }
 
+    private void OnPausePerformed(InputAction.CallbackContext ctx)
+    {
+        PausePressed = true;
+    }
+
+    private void OnPauseCanceled(InputAction.CallbackContext ctx)
+    {
+        PausePressed = false;
+    }
+
+    #endregion
+
     private void LateUpdate()
     {
         JumpPressed = false;
+        PausePressed = false;
     }
 }

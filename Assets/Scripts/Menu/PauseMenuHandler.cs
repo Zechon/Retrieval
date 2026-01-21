@@ -1,8 +1,7 @@
 using UnityEngine;
-using TMPro;
-using System.Collections;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuHandler : MonoBehaviour
 {
@@ -14,6 +13,9 @@ public class PauseMenuHandler : MonoBehaviour
     [Header("Menu Pages")]
     [SerializeField] GameObject Default;
     [SerializeField] GameObject Settings;
+
+    [Header("Else")]
+    [SerializeField] private string mainMenuName = "";
 
     private DepthOfField depth;
 
@@ -94,5 +96,10 @@ public class PauseMenuHandler : MonoBehaviour
     public void PauseGameQuit()
     {
         Application.Quit();
+    }
+
+    public void PauseToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuName);
     }
 }

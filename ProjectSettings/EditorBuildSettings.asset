@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main_Menu.unity
     guid: 3a165afab00a0e646ae3e59c5da96b46
+  - enabled: 1
+    path: Assets/Scenes/DevScenes/DevScn_Player.unity
+    guid: 87ba4a96156d93e459018e959d7cdcc2
+  - enabled: 1
+    path: Assets/Scenes/DevScenes/Nacht.unity
+    guid: 5cae726706b8ef341bb0b3b0c9d3a784
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1faa2de31def6d84eaf4c9c37abe7096, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d99ebdddceca5a94c8222fb7aa62917e, type: 3}

@@ -748,8 +748,8 @@ Transform:
   m_GameObject: {fileID: 50742377}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.041319, y: 0.6825, z: 2.2375097}
-  m_LocalScale: {x: 0.6399988, y: 1.3000802, z: 0.6300032}
+  m_LocalPosition: {x: 15.041319, y: 0.83250004, z: 2.2375097}
+  m_LocalScale: {x: 0.6399988, y: 1.6001244, z: 0.6300032}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2083317266}
@@ -2763,6 +2763,14 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1863719216187353786, guid: da03f06da9f966f4f9f556a31337cede, type: 3}
+      propertyPath: pauseHandler
+      value: 
+      objectReference: {fileID: 1697523677}
+    - target: {fileID: 1863719216187353786, guid: da03f06da9f966f4f9f556a31337cede, type: 3}
+      propertyPath: crouchingHeight
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863719216187353786, guid: da03f06da9f966f4f9f556a31337cede, type: 3}
       propertyPath: ceilingMask.m_Bits
       value: 127
       objectReference: {fileID: 0}
@@ -2838,7 +2846,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5322916913280315535, guid: da03f06da9f966f4f9f556a31337cede, type: 3}
+    - {fileID: 2235699289901846975, guid: da03f06da9f966f4f9f556a31337cede, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3093,8 +3103,8 @@ Transform:
   m_GameObject: {fileID: 569039070}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.041319, y: 0.6825, z: 0.32750973}
-  m_LocalScale: {x: 0.6399988, y: 1.3000802, z: 0.6300032}
+  m_LocalPosition: {x: 15.041319, y: 0.84749997, z: 0.32750973}
+  m_LocalScale: {x: 0.6399988, y: 1.6300405, z: 0.6300032}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2083317266}
@@ -5702,7 +5712,7 @@ Transform:
   m_GameObject: {fileID: 1376715010}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 15.041319, y: 1.6475002, z: 1.2825096}
+  m_LocalPosition: {x: 15.041319, y: 1.9375001, z: 1.2825096}
   m_LocalScale: {x: 0.6399988, y: 2.5401397, z: 0.63000315}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7341,6 +7351,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 458025700196227408, guid: 833883573139ffa4bb67edd15a8ad5aa, type: 3}
   m_PrefabInstance: {fileID: 48476622}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1697523677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7568024641759063086, guid: c0603a0c1f47bf3438b0fc6fdb426ea0, type: 3}
+  m_PrefabInstance: {fileID: 4716236340949041404}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755f5dd913997d548bd40781c2b86e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenuHandler
 --- !u!1001 &1702696953
 PrefabInstance:
   m_ObjectHideFlags: 0

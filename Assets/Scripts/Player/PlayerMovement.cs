@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float gravity = -25f;
     [SerializeField] private float jumpForce = 1.6f;
+    [SerializeField] float sprintJumpMultiplier = 1.1f;
 
     [Header("Crouch Settings")]
     [SerializeField] private float standingHeight = 1.8f;
@@ -92,7 +93,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (grounded && input.JumpPressed && state != MovementState.Crouching)
         {
-            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            float jumpStrength = jumpForce;
+
+            if (state == MovementState.Sprinting)
+                jumpStrength *= sprintJumpMultiplier;
+
+            velocity.y = Mathf.Sqrt(jumpStrength * -2f * gravity);
         }
 
         velocity.y += gravity * Time.deltaTime;

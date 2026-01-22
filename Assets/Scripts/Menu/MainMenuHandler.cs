@@ -38,7 +38,7 @@ public class MainMenuHandler : MonoBehaviour
     }
 
     #region Global
-    private void CloseMenus()
+    public void CloseMenus()
     {
         if (soloPlayerOpen)
         {

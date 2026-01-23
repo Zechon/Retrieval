@@ -1,3 +1,5 @@
+using Unity.Entities;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,6 +16,9 @@ public class PlayerInputHandler : MonoBehaviour
     public bool CrouchHeld { get; private set; }
     public bool SprintHeld { get; private set; }
     public bool PausePressed { get; private set; }
+
+    private EntityManager entityManager;
+    private Entity inputEntity;
 
     private void Awake()
     {
@@ -32,9 +37,26 @@ public class PlayerInputHandler : MonoBehaviour
         inputs.Disable();
     }
 
+    private void Start()
+    {
+        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
+        inputEntity = entityManager.CreateEntity(
+            typeof(PlayerInputSingleton)
+        );
+    }
+
     private void Update()
     {
-        Look = inputs.Player.Look.ReadValue<Vector2>();
+        if (!entityManager.Exists(inputEntity))
+            return;
+
+        entityManager.SetComponentData(inputEntity,
+            new PlayerInputSingleton
+            {
+                move = new float2(Move.x, Move.y),
+                jump = JumpPressed
+            });
     }
 
     private void RegisterCallbacks()

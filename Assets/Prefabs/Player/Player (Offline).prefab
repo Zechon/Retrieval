@@ -246,14 +246,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8369540775764401226}
-  - component: {fileID: 2416100692980216452}
-  - component: {fileID: 8269335678402996903}
-  - component: {fileID: 3419453970531641380}
-  - component: {fileID: 6497044709350929044}
+  - component: {fileID: 1863719216187353786}
   - component: {fileID: 4520258242051867322}
   - component: {fileID: 2664153795478080677}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player (Offline)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,7 +274,7 @@ Transform:
   - {fileID: 8154294585491796762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2416100692980216452
+--- !u!114 &1863719216187353786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,59 +283,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 3904411711441006849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cb1269f03cdbd4fad8e0dc5d1f9885, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd24f23a090ebe499575e89a3341de7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAuthoring
---- !u!114 &8269335678402996903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3904411711441006849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c16549610bfe4458aa9389201d072bb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Entities.Hybrid::Unity.Entities.Hybrid.Baking.LinkedEntityGroupAuthoring
---- !u!114 &3419453970531641380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3904411711441006849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c79d771cedb4794bf100ce60df5f764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.NetCode.Authoring.Hybrid::Unity.NetCode.GhostAuthoringComponent
-  DefaultGhostMode: 2
-  SupportedGhostModes: 3
-  OptimizationMode: 0
-  Importance: 1
-  MaxSendRate: 0
-  prefabId: da03f06da9f966f4f9f556a31337cede
-  HasOwner: 1
-  SupportAutoCommandTarget: 1
-  TrackInterpolationDelay: 0
-  GhostGroup: 0
-  UsePreSerialization: 0
-  UseSingleBaseline: 0
-  RollbackPredictedSpawnedGhostState: 0
-  RollbackPredictionOnStructuralChanges: 1
---- !u!114 &6497044709350929044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3904411711441006849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c630461b3dd5374fa8db24c6287573f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NetcodePlayerInputAuthoring
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  walkSpeed: 4.5
+  sprintSpeed: 7.5
+  crouchSpeed: 2.5
+  gravity: -25
+  jumpForce: 1.6
+  sprintJumpMultiplier: 1.1
+  standingHeight: 2
+  crouchingHeight: 1.125
+  crouchTransitionSpeed: 10
+  groundCheckRadius: 0.3
+  groundCheckDistance: 0.3
+  maxSlopeAngle: 50
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  ceilingCheckRadius: 0.25
+  ceilingMask:
+    serializedVersion: 2
+    m_Bits: 0
+  orientation: {fileID: 3875460188769865657}
+  input: {fileID: 2390893752805479727}
+  controller: {fileID: 4520258242051867322}
+  pauseHandler: {fileID: 0}
 --- !u!143 &4520258242051867322
 CharacterController:
   m_ObjectHideFlags: 0
@@ -478,7 +448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeadBob
   amplitude: 0.035
   frequency: 7.5
-  movement: {fileID: 0}
+  movement: {fileID: 1863719216187353786}
   input: {fileID: 2390893752805479727}
 --- !u!1 &8190801474155582582
 GameObject:

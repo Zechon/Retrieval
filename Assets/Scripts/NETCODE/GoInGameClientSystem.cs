@@ -7,6 +7,11 @@ using UnityEngine;
 [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation)]
 partial struct GoInGameClientSystem : ISystem
 {
+    public void OnCreate(ref SystemState state)
+    {
+        state.RequireForUpdate<NetworkId>();
+    }
+
     //[BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
@@ -21,11 +26,10 @@ partial struct GoInGameClientSystem : ISystem
             Debug.Log("Setting Client as InGame");
 
             Entity rpcEntity = entityCommandBuffer.CreateEntity();
+            entityCommandBuffer.AddComponent(rpcEntity, new GoInGameRequestRpc());
+            entityCommandBuffer.AddComponent(rpcEntity, new SendRpcCommandRequest());
         }
         entityCommandBuffer.Playback(state.EntityManager);
-
-
-        //LEFT OFF AT 24:16 in "Getting Started with Netcode for Entities! (DOTS Multiplayer Tutorial Unity 6)"
     }
 }
 

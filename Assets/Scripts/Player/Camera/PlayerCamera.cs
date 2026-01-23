@@ -16,7 +16,7 @@ public class PlayerCamera : MonoBehaviour
     Vector2 updateLook;
     private void Start()
     {
-        pauseHandler = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenuHandler>();
+       // pauseHandler = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenuHandler>();
         CursorLocker.Lock();
     }
     private void Update()
@@ -43,7 +43,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (pauseHandler.paused) return;
+        if (pauseHandler != null && pauseHandler.paused) return;
 
         float mouseX = Input.GetAxis("Mouse X") * sensX;
         float mouseY = Input.GetAxis("Mouse Y") * sensY;

@@ -32,7 +32,7 @@ partial struct GoInGameServerSystem : ISystem
             Debug.Log("Client Connected to Server!");
 
             Entity playerEntity = entityCommandBuffer.Instantiate(entitiesReferences.playerPrefabEntity);
-            entityCommandBuffer.SetComponent(playerEntity, LocalTransform.FromPosition(new float3(UnityEngine.Random.Range(-10, +10), 1, 0)));
+            entityCommandBuffer.SetComponent(playerEntity, LocalTransform.FromPosition(new float3(UnityEngine.Random.Range(-10, +10), 2, 0)));
 
             NetworkId networkId = SystemAPI.GetComponent<NetworkId>(receiveRpcCommandRequest.ValueRO.SourceConnection);
             entityCommandBuffer.AddComponent(playerEntity, new GhostOwner

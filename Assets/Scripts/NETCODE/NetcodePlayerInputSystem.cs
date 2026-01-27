@@ -13,7 +13,7 @@ partial struct NetcodePlayerInputSystem : ISystem
         state.RequireForUpdate<NetcodePlayerInput>();
     }
 
-    [BurstCompile]
+    //[BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
         if (!SystemAPI.HasSingleton<PlayerInputSingleton>())
@@ -21,6 +21,8 @@ partial struct NetcodePlayerInputSystem : ISystem
 
         PlayerInputSingleton input =
            SystemAPI.GetSingleton<PlayerInputSingleton>();
+
+        UnityEngine.Debug.Log($"Has input singleton: {SystemAPI.HasSingleton<PlayerInputSingleton>()}");
 
         foreach (RefRW<NetcodePlayerInput> netcodePlayerInput 
             in SystemAPI.Query<RefRW<NetcodePlayerInput>>().WithAll<GhostOwnerIsLocal>()) {

@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-1000)]
 public class PlayerInputHandler : MonoBehaviour
 {
     public Player_Inputs inputs;
@@ -46,7 +47,7 @@ public class PlayerInputHandler : MonoBehaviour
         );
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (!entityManager.Exists(inputEntity))
             return;
@@ -57,6 +58,9 @@ public class PlayerInputHandler : MonoBehaviour
                 move = new float2(Move.x, Move.y),
                 jump = JumpPressed
             });
+
+        JumpPressed = false;
+        PausePressed = false;
     }
 
     private void RegisterCallbacks()
@@ -142,10 +146,4 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     #endregion
-
-    private void LateUpdate()
-    {
-        JumpPressed = false;
-        PausePressed = false;
-    }
 }

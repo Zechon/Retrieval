@@ -339,6 +339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c630461b3dd5374fa8db24c6287573f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NetcodePlayerInputAuthoring
+  walkSpeed: 4.5
+  sprintSpeed: 7.5
+  jumpForce: 7
 --- !u!143 &4520258242051867322
 CharacterController:
   m_ObjectHideFlags: 0

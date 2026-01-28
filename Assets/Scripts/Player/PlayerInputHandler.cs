@@ -38,27 +38,8 @@ public class PlayerInputHandler : MonoBehaviour
         inputs.Disable();
     }
 
-    private void Start()
-    {
-        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-
-        inputEntity = entityManager.CreateEntity(
-            typeof(PlayerInputSingleton)
-        );
-    }
-
     private void LateUpdate()
     {
-        if (!entityManager.Exists(inputEntity))
-            return;
-
-        entityManager.SetComponentData(inputEntity,
-            new PlayerInputSingleton
-            {
-                move = new float2(Move.x, Move.y),
-                jump = JumpPressed
-            });
-
         JumpPressed = false;
         PausePressed = false;
     }

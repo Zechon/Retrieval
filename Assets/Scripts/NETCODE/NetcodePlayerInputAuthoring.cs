@@ -15,15 +15,6 @@ public class NetcodePlayerInputAuthoring : MonoBehaviour
         {
             Entity entity = GetEntity(TransformUsageFlags.Dynamic);
             AddComponent(entity, new NetcodePlayerInput());
-            AddComponent(entity, new PlayerMovementData
-            {
-                Velocity = float3.zero,
-                WalkSpeed = authoring.walkSpeed,
-                SprintSpeed = authoring.sprintSpeed,
-                JumpForce = authoring.jumpForce,
-                Grounded = true, // TEMP: force grounded to test movement
-                GroundY = 0.5f
-            });
         }
     }
 }
@@ -31,22 +22,6 @@ public class NetcodePlayerInputAuthoring : MonoBehaviour
 public struct NetcodePlayerInput : IInputComponentData
 {
     public float2 move;
-    public bool jump;
+    public InputEvent jump;
 }
 
-public struct PlayerInputSingleton : IComponentData
-{
-    public float2 move;
-    public bool jump;
-}
-
-public struct PlayerMovementData : IComponentData
-{
-    public float3 Velocity;
-    public float WalkSpeed;
-    public float SprintSpeed;
-    public float JumpForce;
-    public bool Grounded;
-
-    public float GroundY; // usually 0
-}

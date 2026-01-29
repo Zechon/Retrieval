@@ -58,12 +58,12 @@ public class PlayerMovement : MonoBehaviour
     {
         originalHeight = controller.height;
         originalCenter = controller.center;
-        //pauseHandler = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenuHandler>();
+        pauseHandler = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenuHandler>();
     }
 
     private void Update()
     {
-        if (pauseHandler != null && pauseHandler.paused) return;
+        if (pauseHandler != null || pauseHandler.paused) return;
 
         //Ground Check
         grounded = IsGrounded(out groundHit);

@@ -9,7 +9,6 @@ public class PlayerCamera : MonoBehaviour
     [Header("References")]
     [SerializeField] Transform orientation;
     [SerializeField] Transform cameraPivot;
-    [SerializeField] PlayerInputHandler input;
     [SerializeField] private PauseMenuHandler pauseHandler;
 
     private float pitch;
@@ -18,10 +17,6 @@ public class PlayerCamera : MonoBehaviour
     {
        // pauseHandler = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenuHandler>();
         CursorLocker.Lock();
-    }
-    private void Update()
-    {
-        updateLook = input.Look * Time.deltaTime;
     }
 
     private void LateUpdate()

@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 8269335678402996903}
   - component: {fileID: 3419453970531641380}
   - component: {fileID: 6497044709350929044}
+  - component: {fileID: 7722957244348832704}
   - component: {fileID: 4520258242051867322}
   - component: {fileID: 2664153795478080677}
   m_Layer: 0
@@ -342,6 +343,18 @@ MonoBehaviour:
   walkSpeed: 4.5
   sprintSpeed: 7.5
   jumpForce: 7
+--- !u!114 &7722957244348832704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904411711441006849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a7c23f1a6483c40b7f8897145ed40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MyValueAuthoring
 --- !u!143 &4520258242051867322
 CharacterController:
   m_ObjectHideFlags: 0

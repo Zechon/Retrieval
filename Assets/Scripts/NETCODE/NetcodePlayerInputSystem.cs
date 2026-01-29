@@ -27,12 +27,20 @@ public partial class NetcodePlayerInputSystem : SystemBase
         InputSystem.Update();
         Vector2 rawMovement = actions.Move.ReadValue<Vector2>();
         float2 movement = new float2 (rawMovement.x, rawMovement.y);
-        bool jump = actions.Jump.WasPerformedThisFrame();
 
-        foreach (var playerInput in SystemAPI.Query<RefRW<NetcodePlayerInput>>().WithAll<GhostOwnerIsLocal>()) {
+        bool jump = actions.Jump.WasPerformedThisFrame();
+        bool randomize = actions.Interact.WasPerformedThisFrame();
+
+        foreach ((var playerInput, RefRW<MyValue> myValue) in SystemAPI.Query<RefRW<NetcodePlayerInput>, RefRW<MyValue>>().WithAll<GhostOwnerIsLocal>()) {
 
             playerInput.ValueRW.move = movement;
             if (jump) playerInput.ValueRW.jump.Set();
+            if (randomize)
+                {
+                    myValue.ValueRW.value = UnityEngine.Random.Range(1, 999);
+                }
+
+
         }
     }
 }
